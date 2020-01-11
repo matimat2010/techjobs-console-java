@@ -62,11 +62,11 @@ public class JobData {
      * with "Enterprise Holdings, Inc".
      *
      * @param column   Column that should be searched.
-     * @param value Value of teh field to search for
+     * @param value Value of the field to search for
      * @return List of all jobs matching the criteria
      */
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
-
+//ArrayList of  HashMap Objects containing a String for the Key and for the Value
         // load data, if not already loaded
         loadData();
 
@@ -84,6 +84,23 @@ public class JobData {
         return jobs;
     }
 
+    public static ArrayList<HashMap<String, String>> findByValue(String value){
+
+       loadData();
+       // loading csv data, clarify how this works
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+           for (HashMap<String, String> row : allJobs) {
+               String cVals = row.values();
+                for (String sVal : cVals){
+                    if (sVal.contains(value)){
+                        jobs.add(row);
+                    }
+                }
+        }
+           return jobs;
+   }
 
     /**
      * Read in data from a CSV file and store it in a list
@@ -105,7 +122,7 @@ public class JobData {
             String[] headers = parser.getHeaderMap().keySet().toArray(new String[numberOfColumns]);
 
             allJobs = new ArrayList<>();
-
+//ArrayList of All the jobs from the CSV?
             // Put the records into a more friendly format
             for (CSVRecord record : records) {
                 HashMap<String, String> newJob = new HashMap<>();

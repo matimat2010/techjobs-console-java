@@ -62,6 +62,8 @@ public class TechJobs {
 
                 if (searchField.equals("all")) {
                     System.out.println("Search all fields not yet implemented.");
+                   printJobs(JobData.findByValue(searchTerm));
+                    // passing in findByValue method
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -147,7 +149,7 @@ public class TechJobs {
 
             eachSomeJobs.forEach((k,v) -> System.out.println(k + " : " +v));
             //iterates over each element in the ArrayList and prints the key and value, "k & v"
-            //from the HashMap object. At the end of the HashMap object code contines to the rest of the for loop
+            //from the HashMap object. At the end of the HashMap object code continues to the rest of the for loop
 
             System.out.println("*****");
             //print asterix from the text
